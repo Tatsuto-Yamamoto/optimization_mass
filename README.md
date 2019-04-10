@@ -1,5 +1,7 @@
 # optimization_mass
 
+ここは頑張っていい感じにする！
+
 <mass_function>
 パラメーターは7個で、a,b,c,d,f,g,h
 x は (a-b) を意味する
