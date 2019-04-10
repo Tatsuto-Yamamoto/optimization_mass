@@ -1,19 +1,29 @@
-import scipy.optimize
 import numpy as np
-# 質量の実験値	
-mex_top = 173000
-mex_up = 2.2
+from scipy.optimize import minimize
+import particle_mass as pmas
 
+def func(x):
+	f = (1 - pmas.ups(x))**2+(1 - pmas.charms(x))**2+(1 - pmas.downs(x))**2+(1 - pmas.stranges(x))**2+(1 - pmas.botoms(x))**2+(1 - pmas.electrons(x))**2+(1 - pmas.muons(x))**2+(1 - pmas.tauons(x))**2
+	return f
+def gradient(x):
+	df = -2 * (1 - pmas.ups(x)) * pmas.dups(x)-2 * (1 - pmas.charms(x)) * pmas.dcharms(x)-2 * (1 - pmas.downs(x)) * pmas.ddowns(x)-2 * (1 - pmas.stranges(x)) * pmas.dstranges(x)-2 * (1 - pmas.botoms(x)) * pmas.dbotoms(x)-2 * (1 - pmas.electrons(x)) * pmas.delectrons(x)-2 * (1 - pmas.muons(x)) * pmas.dmuons(x)-2 * (1 - pmas.tauons(x)) * pmas.dtauons(x)
+	# df = np.array(df)
+	# print(df)
+	return df
+init = np.array([5.0,-14.48,8.6,0.28,-28.0,34.9,17.0],dtype=np.float128)
+#init = np.array([0,0,0,0,0,0,0],dtype=np.float128)
 
-def objective_function(a,b,c,d,f,h,g):
-	return ((a-b) * np.exp((a-b)/3) * np.sinh(c/3 - c*d) + (a-b)*np.sinh(c*d) - \
-		c * np.exp((a-b)/3) * np.cosh(c/3 - c*d) + c*np.cosh(c*d)) / ((a-b) * np.exp((a-b)/3) * np.sinh(c - c*d)+\
-		(-(a-b))* np.sinh(2*c/3 - c*d) - c*np.exp((a-b)/3) * np.cosh(c - c*d)+\
-		c*np.cosh(2*c/3 - c*d)) / (mex_up/mex_top)
-
-def gradient(theta):
-    '''勾配'''
-    return 2 * (theta - 2)
-
-theta_opt = scipy.optimize.fmin_bfgs(f=objective_function, x0=[5.0,-14.48,8.6,0.28,-280000.0,34.9,17.0])
-print(theta_opt)
+res1 = minimize(func, init, jac=gradient,
+                  method='SLSQP', options={"maxiter":200})
+print(res1)
+x = res1.x
+print("befor=",func(init)) 
+print("after=",func(x))
+print('up =',pmas.ups(x))
+print('charm =',pmas.charms(x))
+print('down =',pmas.downs(x))
+print('strange =',pmas.stranges(x))
+print('botom =',pmas.botoms(x))
+print('electron =',pmas.electrons(x))
+print('muon =',pmas.muons(x))
+print('tauon =',pmas.tauons(x))

@@ -15,7 +15,7 @@ def ups(x): #理論式と実験値の比を返す
 	g = x[6]
 	#print(c/3 - c*d)
 	p1 = (a-b) * np.exp((a-b)/3) * np.sinh(c/3 - c*d) + (a-b)*np.sinh(c*d)
-	#print("p1=", p1)
+	print("p1=", p1)
 	p2 = c * np.exp((a-b)/3) * np.cosh(c/3 - c*d) - c*np.cosh(c*d)
 	p3 = (a-b) * np.exp((a-b)/3) * np.sinh(c - c*d)
 	p4 = (-(a-b))* np.sinh(2*c/3 - c*d) - c*np.exp((a-b)/3) * np.cosh(c - c*d)
@@ -28,6 +28,5 @@ def ups(x): #理論式と実験値の比を返す
 		c*np.cosh(2*c/3 - c*d)) / (mex_up/mex_top)
 	print(r1,r2)
 	return r2
-
 x1 = np.array([5,-14.48,8.6,0.28,-280000,34.9,17])
 ups(x1)
