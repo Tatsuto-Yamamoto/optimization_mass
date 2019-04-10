@@ -34,15 +34,15 @@ algo.solve(initial) # 勾配降下法を計算
 print(algo.x__) # 計算結果で得られた xx を出力
 print(algo.opt__) # 最小化された目的関数 f を出力
 
-plt.scatter(initial[0],initial[1])
-plt.plot(algo.path__[:,0], algo.path__[:,1], linewidth = 1.5)
+# plt.scatter(initial[0],initial[1])
+# plt.plot(algo.path__[:,0], algo.path__[:,1], linewidth = 1.5)
 
-xs = np.linspace(-2,2,300)
-ys = np.linspace(-2,2,300)
-xmesh, ymesh = np.meshgrid(xs,ys)
-xx = np.r_[xmesh.reshape(1,-1), ymesh.reshape(1,-1)]
-levels = [-3.0,-2.5,-2.0,0,1,2]
-# plt.contour(xs,ys,f(xx).reshape(xmesh,ymesh),levels = levels, colors = "k", linestyles = "dotted")
+# xs = np.linspace(-2,2,300)
+# ys = np.linspace(-2,2,300)
+# xmesh, ymesh = np.meshgrid(xs,ys)
+# xx = np.r_[xmesh.reshape(1,-1), ymesh.reshape(1,-1)]
+# levels = [-3.0,-2.5,-2.0,0,1,2]
+# # plt.contour(xs,ys,f(xx).reshape(xmesh,ymesh),levels = levels, colors = "k", linestyles = "dotted")
 
-plt.show()
+# plt.show()
 
