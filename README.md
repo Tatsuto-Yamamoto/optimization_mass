@@ -75,3 +75,4 @@ m_u/m_t = ups = ((x)*Exp[(x)/3]*Sinh[c/3 - c*d] + (x)*Sinh[c*d] -
        Exp[(a - b)/3] Sinh[c - c*d] + (-a + b)*Sinh[2*c/3 - c*d] - 
       c*Exp[(a - b)/3] Cosh[c - c*d] + c*Cosh[2*c/3 - c*d])/(1776.86/
      173000)
+
